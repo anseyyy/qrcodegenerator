@@ -35,16 +35,41 @@ export default function Home() {
   };
 
   return (
-    <main className="relative flex-1 flex flex-col justify-start bg-bg-secondary transition-colors duration-300 overflow-hidden">
+    <main className="relative flex-1 flex flex-col justify-start bg-transparent transition-colors duration-300 overflow-hidden">
+      <Image
+        src="/images/homebgmobile.png"
+        alt="Home background mobile"
+        fill
+        className="absolute inset-0 -z-10 object-cover sm:hidden"
+        priority
+      />
+      <Image
+        src="/images/homebg.png"
+        alt="Home background"
+        fill
+        className="hidden sm:block absolute inset-0 -z-10 object-cover"
+        priority
+      />
+
       {/* Absolute Viewport-Aligned 3x3 Dot Grid Icons */}
       {/* Left side start icon */}
       <div className="absolute left-2 sm:left-4 md:left-8 top-[320px] sm:top-72 w-6 h-6 sm:w-9 sm:h-9 select-none pointer-events-none text-text-muted opacity-30">
-        <Image src="/images/icons/dot-grid.svg" fill className="object-contain" alt="Dot grid pattern" />
+        <Image
+          src="/images/icons/dot-grid.svg"
+          fill
+          className="object-contain"
+          alt="Dot grid pattern"
+        />
       </div>
-      
+
       {/* Right side end icon */}
       <div className="absolute right-2 sm:right-4 md:right-8 top-[180px] sm:top-44 w-6 h-6 sm:w-9 sm:h-9 select-none pointer-events-none text-text-muted opacity-30">
-        <Image src="/images/icons/dot-grid.svg" fill className="object-contain" alt="Dot grid pattern" />
+        <Image
+          src="/images/icons/dot-grid.svg"
+          fill
+          className="object-contain"
+          alt="Dot grid pattern"
+        />
       </div>
 
       <TopSection

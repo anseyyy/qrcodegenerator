@@ -16,7 +16,7 @@ export default function QrSection({ qrDataUrl, hasGenerated }) {
     <section className="relative w-full max-w-xl mx-auto px-6 pb-24 flex flex-col items-center">
       {/* QR Card Container */}
       <div className="relative w-full max-w-md bg-white border border-border-light rounded-card p-8 sm:p-12 flex flex-col items-center shadow-md">
-        
+
 
 
         {/* QR Wrapper with Brackets */}
@@ -32,7 +32,7 @@ export default function QrSection({ qrDataUrl, hasGenerated }) {
           <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary-green rounded-br-lg"></div>
 
           {/* Generated QR Image or Placeholder */}
-          <div className="w-48 h-48 relative flex items-center justify-center overflow-hidden rounded-[12px]">
+          <div className="w-48 h-48 relative flex items-center justify-center overflow-hidden rounded-qr-preview">
             {hasGenerated && qrDataUrl ? (
               <Image
                 src={qrDataUrl}
@@ -52,20 +52,20 @@ export default function QrSection({ qrDataUrl, hasGenerated }) {
                   fill="none"
                 >
                   <rect width="29" height="29" fill="white" />
-                  <path d="M 1,1 H 8 V 8 H 1 Z M 2,2 V 7 H 7 V 2 Z M 3,3 H 6 V 6 H 3 Z" fill="currentColor"/>
-                  <path d="M 21,1 H 28 V 8 H 21 Z M 22,2 V 7 H 27 V 2 Z M 23,3 H 26 V 6 H 23 Z" fill="currentColor"/>
-                  <path d="M 1,21 H 8 V 28 H 1 Z M 2,22 V 27 H 7 V 22 Z M 3,23 H 6 V 26 H 3 Z" fill="currentColor"/>
-                  <path d="M 10,1 H 12 V 3 H 10 Z M 13,0 H 15 V 2 H 13 Z M 16,1 H 18 V 3 H 16 Z M 19,2 H 20 V 4 H 19 Z" fill="currentColor"/>
-                  <path d="M 9,4 H 11 V 6 H 9 Z M 14,3 H 16 V 5 H 14 Z M 18,4 H 20 V 6 H 18 Z" fill="currentColor"/>
-                  <path d="M 10,7 H 12 V 9 H 10 Z M 15,6 H 17 V 8 H 15 Z M 19,7 H 20 V 9 H 19 Z" fill="currentColor"/>
-                  <path d="M 1,10 H 3 V 12 H 1 Z M 5,9 H 7 V 11 H 5 Z M 9,10 H 11 V 12 H 9 Z" fill="currentColor"/>
-                  <path d="M 21,10 H 23 V 12 H 21 Z M 25,9 H 27 V 11 H 25 Z M 27,11 H 28 V 13 H 27 Z" fill="currentColor"/>
-                  <path d="M 10,13 H 12 V 15 H 10 Z M 14,14 H 16 V 16 H 14 Z M 18,13 H 20 V 15 H 18 Z" fill="currentColor"/>
-                  <path d="M 1,15 H 3 V 17 H 1 Z M 5,14 H 7 V 16 H 5 Z M 9,15 H 11 V 17 H 9 Z" fill="currentColor"/>
-                  <path d="M 21,15 H 23 V 17 H 21 Z M 25,14 H 27 V 16 H 25 Z M 27,16 H 28 V 18 H 27 Z" fill="currentColor"/>
-                  <path d="M 10,21 H 12 V 23 H 10 Z M 13,22 H 15 V 24 H 13 Z M 16,21 H 18 V 23 H 16 Z M 19,22 H 20 V 24 H 19 Z" fill="currentColor"/>
-                  <path d="M 9,25 H 11 V 27 H 9 Z M 14,24 H 16 V 26 H 14 Z M 18,25 H 20 V 27 H 18 Z" fill="currentColor"/>
-                  <path d="M 10,27 H 12 V 29 H 10 Z M 15,28 H 17 V 30 H 15 Z M 19,27 H 20 V 29 H 19 Z" fill="currentColor"/>
+                  <path d="M 1,1 H 8 V 8 H 1 Z M 2,2 V 7 H 7 V 2 Z M 3,3 H 6 V 6 H 3 Z" fill="currentColor" />
+                  <path d="M 21,1 H 28 V 8 H 21 Z M 22,2 V 7 H 27 V 2 Z M 23,3 H 26 V 6 H 23 Z" fill="currentColor" />
+                  <path d="M 1,21 H 8 V 28 H 1 Z M 2,22 V 27 H 7 V 22 Z M 3,23 H 6 V 26 H 3 Z" fill="currentColor" />
+                  <path d="M 10,1 H 12 V 3 H 10 Z M 13,0 H 15 V 2 H 13 Z M 16,1 H 18 V 3 H 16 Z M 19,2 H 20 V 4 H 19 Z" fill="currentColor" />
+                  <path d="M 9,4 H 11 V 6 H 9 Z M 14,3 H 16 V 5 H 14 Z M 18,4 H 20 V 6 H 18 Z" fill="currentColor" />
+                  <path d="M 10,7 H 12 V 9 H 10 Z M 15,6 H 17 V 8 H 15 Z M 19,7 H 20 V 9 H 19 Z" fill="currentColor" />
+                  <path d="M 1,10 H 3 V 12 H 1 Z M 5,9 H 7 V 11 H 5 Z M 9,10 H 11 V 12 H 9 Z" fill="currentColor" />
+                  <path d="M 21,10 H 23 V 12 H 21 Z M 25,9 H 27 V 11 H 25 Z M 27,11 H 28 V 13 H 27 Z" fill="currentColor" />
+                  <path d="M 10,13 H 12 V 15 H 10 Z M 14,14 H 16 V 16 H 14 Z M 18,13 H 20 V 15 H 18 Z" fill="currentColor" />
+                  <path d="M 1,15 H 3 V 17 H 1 Z M 5,14 H 7 V 16 H 5 Z M 9,15 H 11 V 17 H 9 Z" fill="currentColor" />
+                  <path d="M 21,15 H 23 V 17 H 21 Z M 25,14 H 27 V 16 H 25 Z M 27,16 H 28 V 18 H 27 Z" fill="currentColor" />
+                  <path d="M 10,21 H 12 V 23 H 10 Z M 13,22 H 15 V 24 H 13 Z M 16,21 H 18 V 23 H 16 Z M 19,22 H 20 V 24 H 19 Z" fill="currentColor" />
+                  <path d="M 9,25 H 11 V 27 H 9 Z M 14,24 H 16 V 26 H 14 Z M 18,25 H 20 V 27 H 18 Z" fill="currentColor" />
+                  <path d="M 10,27 H 12 V 29 H 10 Z M 15,28 H 17 V 30 H 15 Z M 19,27 H 20 V 29 H 19 Z" fill="currentColor" />
                 </svg>
 
                 {/* Centered Instruction Overlay */}
