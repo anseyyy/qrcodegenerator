@@ -6,79 +6,112 @@ export default function Footer() {
   return (
     <footer className="w-full bg-bg-footer text-text-footer-secondary border-t border-border-divider transition-all duration-300">
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
           
           {/* Column 1: Brand Info */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2.5 group w-fit">
-              
-              <div className="text-xl font-bold text-text-footer transition-colors duration-200">
+              <div className="text-lg font-bold text-text-footer transition-colors duration-200">
                 QrCodey
               </div>
             </Link>
-            
-            <div className="space-y-4 text-sm leading-relaxed text-text-footer-secondary">
-              <p>
-                QrCodey is a personal project built by Ansil. A simple, useful QR code generator designed for everyone, completely free.
-              </p>
-              <p>
-                Create, style, and customize your QR codes with logo overlays and beautiful color themes, with no sign-up required. <span className="inline-block text-primary-green">💚</span>
-              </p>
-            </div>
+            <p className="text-xs leading-relaxed text-zinc-400">
+              QrCodey is a personal project built by Ansil. A simple, useful custom QR code generator designed for everyone, 100% free with no monthly subscription caps.
+            </p>
+            <p className="text-xs leading-relaxed text-zinc-400">
+              Create, style, and customize QR codes with logo overlays and beautiful template themes locally inside your browser window. <span className="inline-block text-primary-green">💚</span>
+            </p>
           </div>
 
-          {/* Column 2: Developer Details */}
-          <div className="space-y-6 lg:pl-10">
-            <h3 className="text-base font-semibold text-text-footer">Developer Profile</h3>
-            <ul className="space-y-1 text-sm font-medium">
-              {[
-                { name: "GitHub Portfolio", href: "https://github.com/anseyyy", handle: "anseyyy" },
-                { name: "LinkedIn Profile", href: "https://linkedin.com/in/ahamedansil", handle: "ahamedansil" },
-                { name: "Contact Email", href: "mailto:ahamedansilpa@gmail.com", handle: "ahamedansilpa@gmail.com" }
-              ].map((item, index) => (
-                <li key={index} className="border-b border-border-divider/50 py-3.5 last:border-0">
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between text-text-footer-secondary hover:text-text-footer transition-colors duration-200 group"
-                  >
-                    <div className="flex flex-col">
-                      <span className="text-text-footer">{item.name}</span>
-                      <span className="text-xs font-normal text-zinc-500 mt-0.5">{item.handle}</span>
-                    </div>
-                    <span className="text-zinc-500 transition-transform duration-200 group-hover:translate-x-1">
-                      &rarr;
-                    </span>
-                  </a>
-                </li>
-              ))}
+          {/* Column 2: Custom Generators */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-text-footer">Custom Generators</h3>
+            <ul className="space-y-2 text-xs font-semibold">
+              <li>
+                <Link href="/url-to-qr-code" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  URL to QR Code
+                </Link>
+              </li>
+              <li>
+                <Link href="/wifi-qr-code-generator" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  WiFi QR Code Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/vcard-qr-code" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  vCard QR Code Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/whatsapp-qr-code" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  WhatsApp QR Code
+                </Link>
+              </li>
+              <li>
+                <Link href="/qr-code-with-logo" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  QR Code with Logo
+                </Link>
+              </li>
+              <li>
+                <Link href="/qr-code-api" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  QR Code Generator API
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 3: Support & QR Code */}
-          <div className="space-y-6">
-            <h3 className="text-base font-semibold text-text-footer">Support My Journey</h3>
-            <p className="text-sm leading-relaxed text-text-footer-secondary">
+          {/* Column 3: Resources */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-text-footer">Knowledge Hub</h3>
+            <ul className="space-y-2 text-xs font-semibold">
+              <li>
+                <Link href="/blog" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  QrCodey Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <a href="https://github.com/anseyyy" target="_blank" rel="noopener noreferrer" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  GitHub Profile
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/ahamedansil" target="_blank" rel="noopener noreferrer" className="text-text-footer-secondary hover:text-text-footer transition-colors">
+                  LinkedIn Profile
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Support */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-text-footer">Support My Journey</h3>
+            <p className="text-xs leading-relaxed text-zinc-400">
               If you find QrCodey helpful and want to support more free tools, feel free to show some love!
             </p>
-
             {/* QR Card */}
-            <div className="w-fit rounded-donation-card bg-white p-3 shadow-md border border-zinc-100">
-              <div className="flex flex-col items-center gap-2">
-                {/* Real Donation QR Code Image */}
-                <div className="relative w-[120px] h-[120px] select-none">
+            <div className="w-fit rounded-donation-card bg-white p-2.5 shadow-sm border border-zinc-800">
+              <div className="flex flex-col items-center gap-1.5">
+                <div className="relative w-[100px] h-[100px] select-none">
                   <Image
                     src={donationQr}
                     alt="Scan to Support"
                     fill
                     className="object-contain"
                   />
-                  {/* CSS overlay replacing the center logo with a green heart logo */}
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[34px] h-[34px] bg-white rounded-full flex items-center justify-center border border-zinc-100 shadow-sm">
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[28px] h-[28px] bg-white rounded-full flex items-center justify-center border border-zinc-100 shadow-sm">
                     <svg
-                      width="18"
-                      height="18"
+                      width="14"
+                      height="14"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -91,12 +124,11 @@ export default function Footer() {
                     </svg>
                   </div>
                 </div>
-                <span className="text-[10px] font-semibold text-zinc-900 uppercase tracking-wider">
+                <span className="text-[8px] font-bold text-zinc-900 uppercase tracking-wider">
                   Scan to Donate
                 </span>
               </div>
             </div>
-
           </div>
 
         </div>
