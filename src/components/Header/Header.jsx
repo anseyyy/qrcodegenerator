@@ -8,28 +8,20 @@ import { logoDark } from "@/require";
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isAbout = pathname === "/about";
 
   return (
     <header className="sticky top-0 z-50 w-full bg-bg-navbar border-b border-border-divider transition-all duration-300">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6 sm:px-8">
         {/* Logo Section */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="relative h-8 w-8 overflow-hidden rounded-[8px]">
-            <Image
-              src={logoDark}
-              alt="adeogram Logo"
-              fill
-              className="object-cover"
-            />
+          
+          <div className="text-xl font-bold tracking-tight text-text-footer transition-colors duration-200">
+            QrCodey
           </div>
-          <span className="text-xl font-semibold tracking-tight text-text-footer transition-colors duration-200">
-            adeogram
-          </span>
         </Link>
 
         {/* Navigation Links */}
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/"
             className={`text-sm font-medium transition-colors duration-200 ${
@@ -39,16 +31,6 @@ export default function Header() {
             }`}
           >
             Home
-          </Link>
-          <Link
-            href="/about"
-            className={`text-sm font-medium transition-colors duration-200 ${
-              isAbout
-                ? "text-primary-green"
-                : "text-text-footer-secondary hover:text-text-footer"
-            }`}
-          >
-            About Us
           </Link>
           <a
             href="https://instagram.com"
@@ -72,7 +54,7 @@ export default function Header() {
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
             </svg>
-            Instagram
+            <span className="hidden sm:inline">Instagram</span>
           </a>
         </nav>
       </div>

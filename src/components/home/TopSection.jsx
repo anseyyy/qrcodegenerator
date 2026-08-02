@@ -13,7 +13,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate }) {
       {/* Pill Badge */}
       <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-badge bg-primary-light border border-primary-green/20 text-primary-dark text-badge font-medium tracking-wide uppercase mb-6 shadow-sm">
         <span className="w-1.5 h-1.5 rounded-full bg-primary-green animate-pulse"></span>
-        100% Free • No Sign Up
+        ✨ 100% Free • Customize Themes & Logos!
       </div>
 
       {/* Main Title with Sparkle Lines */}
@@ -54,7 +54,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate }) {
         </div>
 
         {/* Input Bar */}
-        <div className="flex items-center gap-2.5 w-full h-[68px] max-md:h-[60px] p-2 bg-white rounded-input border border-border-input shadow-sm focus-within:ring-4 focus-within:ring-primary-light focus-within:border-primary-green transition-all duration-250">
+        <div className="flex items-center gap-2.5 w-full h-[68px] max-md:h-[60px] p-2 bg-white/90 backdrop-blur-sm rounded-input border border-border-input shadow-sm focus-within:ring-4 focus-within:ring-primary-light focus-within:border-primary-green transition-all duration-250">
           {/* Chain Link Icon */}
           <div className="pl-3 text-text-muted">
             <svg
@@ -104,6 +104,9 @@ export default function TopSection({ inputValue, setInputValue, onGenerate }) {
             </svg>
           </Button>
         </div>
+        <p className="text-xs text-text-body/80 mt-3 select-none">
+          💡 <strong>Tip:</strong> You can choose color themes and add custom logos to the center of your QR code after generating!
+        </p>
       </form>
     </section>
   );
