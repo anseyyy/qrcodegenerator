@@ -123,7 +123,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
     <section className="relative w-full max-w-3xl mx-auto px-6 pt-12 sm:pt-16 lg:pt-24 pb-8 flex flex-col items-center text-center">
 
       {/* Pill Badge */}
-      <div className=" hidden sm:block  inline-flex items-center gap-1.5 px-4 py-1.5 rounded-badge bg-primary-light border border-primary-green/20 text-primary-dark text-badge font-medium tracking-wide uppercase mb-6 shadow-sm select-none">
+      <div className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-badge bg-primary-light border border-primary-green/20 text-primary-dark text-badge font-medium tracking-wide uppercase mb-6 shadow-sm select-none">
         <span className=" w-1.5 h-1.5 rounded-full bg-primary-green animate-pulse"></span>
         ✨ Free Customizer • Themes & Logos!
       </div>
