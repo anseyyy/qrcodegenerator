@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/components/common/Button";
 
 export default function TopSection({ inputValue, setInputValue, onGenerate, qrType = "url" }) {
@@ -164,6 +165,36 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
       <div className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-badge bg-primary-light border border-primary-green/20 text-primary-dark text-badge font-medium tracking-wide uppercase mb-6 shadow-sm select-none">
         <span className=" w-1.5 h-1.5 rounded-full bg-primary-green animate-pulse"></span>
         ✨ Free Customizer • Themes & Logos!
+      </div>
+
+      {/* Horizontal Scrollable Tabs bar */}
+      <div className="w-full max-w-xl mx-auto mb-8 px-1">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-2 select-none justify-start sm:justify-center">
+          {[
+            { name: "URL Link", slug: "url-to-qr-code", path: "/url-to-qr-code", icon: "🔗" },
+            { name: "WiFi Network", slug: "wifi-qr-code-generator", path: "/wifi-qr-code-generator", icon: "📶" },
+            { name: "vCard Business", slug: "vcard-qr-code", path: "/vcard-qr-code", icon: "🪪" },
+            { name: "WhatsApp Chat", slug: "whatsapp-qr-code", path: "/whatsapp-qr-code", icon: "💬" },
+            { name: "With Logo", slug: "qr-code-with-logo", path: "/qr-code-with-logo", icon: "🎨" },
+            { name: "Developer API", slug: "qr-code-api", path: "/qr-code-api", icon: "⚙️" },
+          ].map((tab) => {
+            const isActive = qrType === tab.slug || (qrType === "url" && tab.slug === "url-to-qr-code");
+            return (
+              <Link
+                key={tab.slug}
+                href={tab.path}
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-full border text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? "bg-primary-green text-black border-primary-green shadow-sm scale-105"
+                    : "bg-white/40 border-white/20 text-text-body hover:bg-white/60 hover:text-text-heading"
+                }`}
+              >
+                <span>{tab.icon}</span>
+                <span>{tab.name}</span>
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
       {/* Main Title with Sparkle Lines */}
