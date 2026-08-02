@@ -35,8 +35,25 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
     }
   }, [inputValue]);
 
+  // Mappings to resolve dynamic sub-fields
+  let activeForm = qrType;
+  if (qrType.includes("wifi")) activeForm = "wifi";
+  else if (qrType.includes("vcard")) activeForm = "vcard";
+  else if (qrType.includes("email")) activeForm = "email";
+  else if (qrType.includes("whatsapp")) activeForm = "whatsapp";
+  else if (qrType.includes("location")) activeForm = "location";
+  else if (qrType.includes("text")) activeForm = "text";
+  else if (qrType.includes("phone")) activeForm = "phone";
+  else if (qrType.includes("instagram")) activeForm = "instagram";
+  else if (qrType.includes("facebook")) activeForm = "facebook";
+  else if (qrType.includes("twitter")) activeForm = "twitter";
+  else if (qrType.includes("youtube")) activeForm = "youtube";
+  else activeForm = "url";
+
+  const isMultiField = ["wifi", "vcard", "email", "whatsapp", "location"].includes(activeForm);
+
   const compileValue = () => {
-    switch (qrType) {
+    switch (activeForm) {
       case "wifi":
         return `WIFI:S:${wifiSsid.trim()};T:${wifiEncryption};P:${wifiPassword.trim()};;`;
       case "vcard":
@@ -100,7 +117,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
 
   // Pre-calculate headings and helper text depending on active route/type
   const getSubheading = () => {
-    switch (qrType) {
+    switch (activeForm) {
       case "wifi": return "Generate a scannable WiFi QR code. Users can scan to join the network instantly.";
       case "vcard": return "Create a digital vCard business card. Users can scan to import your contact details.";
       case "email": return "Generate an Email QR code with pre-filled subject line and message body.";
@@ -117,7 +134,28 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
     }
   };
 
-  const isMultiField = ["wifi", "vcard", "email", "whatsapp", "location"].includes(qrType);
+  // Resolve clean titles for H1 headings
+  const getCleanTitle = () => {
+    if (qrType === "url" || qrType === "url-to-qr-code") return { black: "", green: "QR Generator" };
+    if (qrType.startsWith("text-")) return { black: "Text", green: "QR Generator" };
+    if (qrType.startsWith("wifi-")) return { black: "WiFi Network", green: "QR Generator" };
+    if (qrType.startsWith("email-")) return { black: "Email Link", green: "QR Generator" };
+    if (qrType.startsWith("phone-")) return { black: "Phone Call", green: "QR Generator" };
+    if (qrType.startsWith("vcard-")) return { black: "vCard Business", green: "QR Generator" };
+    if (qrType.startsWith("location-")) return { black: "GPS Location", green: "QR Generator" };
+    if (qrType.startsWith("whatsapp-")) return { black: "WhatsApp Chat", green: "QR Generator" };
+    if (qrType.startsWith("instagram-")) return { black: "Instagram Feed", green: "QR Generator" };
+    if (qrType.startsWith("facebook-")) return { black: "Facebook Page", green: "QR Generator" };
+    if (qrType.startsWith("twitter-")) return { black: "Twitter Profile", green: "QR Generator" };
+    if (qrType.startsWith("youtube-")) return { black: "YouTube Media", green: "QR Generator" };
+    if (qrType.startsWith("pdf-")) return { black: "PDF Document", green: "QR Generator" };
+    if (qrType.startsWith("image-")) return { black: "Image File", green: "QR Generator" };
+    if (qrType.startsWith("qr-code-with-logo")) return { black: "Branded Logo", green: "QR Generator" };
+    if (qrType.startsWith("qr-code-api")) return { black: "Developer API", green: "QR Generator" };
+    return { black: "Custom", green: "QR Generator" };
+  };
+
+  const titleParts = getCleanTitle();
 
   return (
     <section className="relative w-full max-w-3xl mx-auto px-6 pt-12 sm:pt-16 lg:pt-24 pb-8 flex flex-col items-center text-center">
@@ -131,9 +169,9 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
       {/* Main Title with Sparkle Lines */}
       <div>
         <h1 className="display-large text-text-heading leading-tight tracking-[-1%] capitalize">
-          {qrType.replace("-", " ")}{" "}
+          {titleParts.black}{" "}
           <span className="relative inline-block text-primary-green">
-            QR Generator
+            {titleParts.green}
             <span className="absolute top-1 sm:-top-1.5 xl:top-1.5 xl:-right-3 -right-3.5 w-6 h-6 select-none pointer-events-none">
               <Image
                 src="/images/icons/sparkle-lines.svg"
@@ -168,7 +206,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
           /* Multi-Field Grid Layout (WiFi, vCard, Email, WhatsApp, Geo) */
           <div className="flex flex-col gap-4 p-6 sm:p-8 rounded-card bg-white/70 backdrop-blur-md border border-border-input shadow-md w-full animate-[fadeIn_0.3s_ease-out]">
             
-            {qrType === "wifi" && (
+            {activeForm === "wifi" && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-text-muted">Network Name (SSID)</label>
@@ -206,7 +244,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
               </div>
             )}
 
-            {qrType === "vcard" && (
+            {activeForm === "vcard" && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-text-muted">First Name</label>
@@ -284,7 +322,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
               </div>
             )}
 
-            {qrType === "email" && (
+            {activeForm === "email" && (
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-text-muted">Send To (Email Address)</label>
@@ -320,7 +358,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
               </div>
             )}
 
-            {qrType === "whatsapp" && (
+            {activeForm === "whatsapp" && (
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-text-muted">Phone Number (with Country Code)</label>
@@ -346,7 +384,7 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
               </div>
             )}
 
-            {qrType === "location" && (
+            {activeForm === "location" && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-text-muted">Latitude</label>
@@ -383,9 +421,9 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
             <div className="flex items-center gap-2.5 w-full h-[68px] max-md:h-[60px] p-2 bg-white/90 backdrop-blur-sm rounded-input border border-border-input shadow-sm focus-within:ring-4 focus-within:ring-primary-light focus-within:border-primary-green transition-all duration-250">
               {/* Context-Specific Icon */}
               <div className="pl-3 text-text-muted">
-                {qrType === "text" ? (
+                {activeForm === "text" ? (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" /></svg>
-                ) : ["instagram", "facebook", "twitter", "youtube"].includes(qrType) ? (
+                ) : ["instagram", "facebook", "twitter", "youtube"].includes(activeForm) ? (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
                 ) : (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" /></svg>
@@ -399,11 +437,11 @@ export default function TopSection({ inputValue, setInputValue, onGenerate, qrTy
                 value={simpleText}
                 onChange={(e) => setSimpleText(e.target.value)}
                 placeholder={
-                  qrType === "text" ? "Type or paste your text content here..." :
-                  qrType === "instagram" ? "Enter Instagram username (e.g. anseyyy)" :
-                  qrType === "facebook" ? "Enter Facebook username/profile URL" :
-                  qrType === "twitter" ? "Enter Twitter username (e.g. anseyyy)" :
-                  qrType === "youtube" ? "Enter YouTube channel or video URL" :
+                  activeForm === "text" ? "Type or paste your text content here..." :
+                  activeForm === "instagram" ? "Enter Instagram username (e.g. anseyyy)" :
+                  activeForm === "facebook" ? "Enter Facebook username/profile URL" :
+                  activeForm === "twitter" ? "Enter Twitter username (e.g. anseyyy)" :
+                  activeForm === "youtube" ? "Enter YouTube channel or video URL" :
                   "Paste your target link here..."
                 }
                 className="flex-1 bg-transparent border-0 outline-none text-xs font-semibold text-text-heading placeholder-text-muted focus:ring-0 py-2"

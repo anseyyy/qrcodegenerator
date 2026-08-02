@@ -6,6 +6,7 @@ import TopSection from "@/components/home/TopSection";
 import QrSection from "@/components/home/QrSection";
 import Breadcrumb from "@/components/seo/Breadcrumb";
 import JsonLd from "@/components/seo/JsonLd";
+import { usePathname } from "next/navigation";
 import {
   generateQrWithCustomizations,
   FRAMES,
@@ -25,6 +26,9 @@ export default function CategoryLayout({
   seoCopyBulletTitle = "",
   seoCopyBullets = []
 }) {
+  const pathname = usePathname();
+  const slug = pathname ? (pathname.replace(/^\//, "") || "url") : "url";
+
   const [inputValue, setInputValue] = useState("");
   const [generatedValue, setGeneratedValue] = useState("");
   const [qrDataUrl, setQrDataUrl] = useState("");
@@ -203,7 +207,7 @@ export default function CategoryLayout({
         inputValue={inputValue}
         setInputValue={setInputValue}
         onGenerate={handleGenerate}
-        qrType={qrType}
+        qrType={slug}
       />
       
       <QrSection
